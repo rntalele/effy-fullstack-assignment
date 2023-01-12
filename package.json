@@ -1,0 +1,28 @@
+{
+  "name": "effy-fullstack-assignment",
+  "version": "1.0.0",
+  "description": "Full stack Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rntalele/effy-fullstack-assignment.git"
+  },
+  "author": "Rohan Talele",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rntalele/effy-fullstack-assignment/issues"
+  },
+  "homepage": "https://github.com/rntalele/effy-fullstack-assignment#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.3"
+  }
+}
