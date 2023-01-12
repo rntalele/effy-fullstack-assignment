@@ -3,11 +3,8 @@ const express = require('express');
 
 const router = express.Router();
 
-const demo = async (req,res)=>{
-    res.json('hello');
-}
+const userRoute = require('./user.route');
 
-router.get('/',demo)
-
+router.use('/users',userRoute);
 
 module.exports = router;
