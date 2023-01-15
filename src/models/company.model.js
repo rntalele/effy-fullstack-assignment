@@ -3,7 +3,8 @@ const {userSchema} = require('../models');
 const companySchema = mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     address:{
         type:String,
@@ -17,8 +18,7 @@ const companySchema = mongoose.Schema({
         }
     },
     users:{
-        type:[userSchema],
-        default:[]
+        type:[userSchema]
     }
 })
 

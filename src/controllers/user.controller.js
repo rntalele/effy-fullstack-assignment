@@ -44,7 +44,7 @@ const updateUser = async (req,res) => {
 const deleteUser = async (req,res) => {
     try {
         const {id} = req.params;
-        let data = await userService.deleteUser(id,req.body);
+        let data = await userService.deleteUser(id);
         res.status(200).json(data);
     } catch (error) {
         res.status(500).json({message:error.message})
@@ -54,7 +54,7 @@ const deleteUser = async (req,res) => {
 const deactivateUser = async (req,res) => {
     try {
         const {id} = req.params;
-        await userService.deactivateUser(id,req.body);
+        await userService.deactivateUser(id);
         res.status(200).json({message:'User Deactivated Successfuly'});
     } catch (error) {
         res.status(500).json({message:error.message})
