@@ -1,13 +1,13 @@
 import {useState} from 'react';
 import CompanyModal from './CompanyModal';
-
+import  {useNavigate}  from "react-router-dom";
 
 const CompanyList = ({companyData,handleCancel,handleAdd,handleUpdate,handleDelete,showModal,setShowModal}) => {
 
     
     const [operation,setOperation] = useState();
     const [currCompany,setCurrCompany] = useState();
-    
+    const navigate = useNavigate();
 
     const operationHandler = (operation,company)=>{
         if(company) setCurrCompany(company);
@@ -34,8 +34,8 @@ const CompanyList = ({companyData,handleCancel,handleAdd,handleUpdate,handleDele
                             <td>{company.name}</td>
                             <td className="text-center">{company.users.length}</td>
                             <td className="text-center">
-                                <button className="btn btn-primary mx-2">View Users</button>
-                                <button className="btn btn-secondary mx-2">View Company Details</button>
+                                <button className="btn btn-primary mx-2" onClick={()=>navigate('/company/'+company._id+'/users')}>View Users</button>
+                                <button className="btn btn-secondary mx-2" onClick={()=>navigate('/companydetails/'+company._id)}>View Company Details</button>
                                 <button className="btn btn-info mx-2" onClick={()=>operationHandler('update',company)}>Edit Company</button>
                                 <button className="btn btn-danger" onClick={()=>handleDelete(company._id)}>Delete Company</button>
                             </td>

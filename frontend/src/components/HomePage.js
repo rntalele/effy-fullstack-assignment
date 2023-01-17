@@ -5,6 +5,7 @@ import { config } from '../App';
 import CompanyList from './CompanyList';
 import  {useNavigate}  from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { APIKEY } from '../APIKEY';
 const HomePage = ()=>{
 
     const [companyData,setCompanyData] = useState();
@@ -26,9 +27,15 @@ const HomePage = ()=>{
         setShowModal(false);
     }
 
+    const getLatLong = async (address)=>{
+        let result = await axios.get('https://maps.googleapis.com/maps/api/geocode/json?address='+ address + '&key='+APIKEY.secret);
+        return {latitude:result.data.results[0].geometry.location.lat,longitude:result.data.results[0].geometry.location.lng}
+    }
+
     const handleAdd = async (name,address) => {
         try {
-            let res = await axios.post(config.endpoint+'/companies',{name,address,coordinates:{latitude:"",longitude:""}});
+            let {latitude,longitude} = await getLatLong(address);
+            await axios.post(config.endpoint+'/companies',{name,address,coordinates:{latitude:latitude,longitude:longitude}});
             setShowModal(false);
             fetchCompanies();
             navigate('/')
@@ -39,7 +46,7 @@ const HomePage = ()=>{
 
     const handleUpdate = async (name,address,id) => {
         try {
-            let res = await axios.put(config.endpoint+'/companies/'+id,{name,address});
+            await axios.put(config.endpoint+'/companies/'+id,{name,address});
             setShowModal(false);
             fetchCompanies();
             navigate('/')
@@ -50,7 +57,7 @@ const HomePage = ()=>{
 
     const handleDelete = async (id) => {
         try {
-            let res = await axios.delete(config.endpoint+'/companies/'+id);
+            await axios.delete(config.endpoint+'/companies/'+id);
             setShowModal(false);
             fetchCompanies();
             navigate('/')

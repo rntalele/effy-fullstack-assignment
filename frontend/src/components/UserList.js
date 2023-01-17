@@ -34,7 +34,7 @@ const UserList = ()=>{
 
     const handleAdd = async (firstName,lastName,email,designation,dob) => {
         try {
-           let res = await axios.post(config.endpoint+'/users',{firstname:firstName,lastname:lastName,email:email,designation:designation,dob:dob});
+           await axios.post(config.endpoint+'/users',{firstname:firstName,lastname:lastName,email:email,designation:designation,dob:dob});
            setShowModal(false);
            navigate('/users');
            fetchUsers();
@@ -45,7 +45,7 @@ const UserList = ()=>{
 
     const handleUpdate = async (firstName,lastName,email,designation,dob,id) => {
         try {
-            let res = await axios.put(config.endpoint+'/users/'+id,{firstname:firstName,lastname:lastName,email:email,designation:designation,dob:dob});
+            await axios.put(config.endpoint+'/users/'+id,{firstname:firstName,lastname:lastName,email:email,designation:designation,dob:dob});
             setShowModal(false);
             navigate('/users');
             fetchUsers();
@@ -56,7 +56,7 @@ const UserList = ()=>{
 
     const handleDelete = async (id) => {
         try {
-            let res = await axios.delete(config.endpoint+'/users/'+id);
+            await axios.delete(config.endpoint+'/users/'+id);
             setShowModal(false);
             navigate('/users');
             fetchUsers();
@@ -67,7 +67,7 @@ const UserList = ()=>{
 
     const handleDeactivate = async (id) => {
         try {
-            let res = await axios.put(config.endpoint+'/users/'+id+'/deactivate');
+            await axios.put(config.endpoint+'/users/'+id+'/deactivate');
             setShowModal(false);
             navigate('/users');
             fetchUsers();
