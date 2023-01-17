@@ -7,7 +7,7 @@ import CompanyDetail from './components/CompanyDetail';
 import CompanyUsers from './components/CompanyUsers';
 
 export const config = {
-  endpoint: `http://localhost:8082/v1`,
+  endpoint: `https://effy-backend.onrender.com/v1`,
 };
 
 function App() {
