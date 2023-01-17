@@ -113,7 +113,7 @@ const CompanyUsers = ()=>{
                             
                         </select>
                         <h5 className="p-0 mx-2">To</h5>
-                        <select className="form-select" value={selectedUser} onChange={toCompanyChangeHandler}>
+                        <select className="form-select" value={toCompany} onChange={toCompanyChangeHandler}>
                             <option value='select'>Select Company</option>
                              {
                                 allCompanies?.map((company)=><option value={company._id} key={company._id}>{company.name}</option>)
